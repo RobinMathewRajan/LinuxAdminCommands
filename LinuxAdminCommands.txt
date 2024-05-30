@@ -1,1 +1,6 @@
+These commands are the commands I collected for my purpose. I do not recommend anyone to use this list without proper research.
 sudo apt install cpupower-gui
+powerprofilesctl set power-saver
+powerprofilesctl
+gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
+watch -n 1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
