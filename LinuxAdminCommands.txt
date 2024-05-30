@@ -4,3 +4,4 @@ powerprofilesctl set power-saver
 powerprofilesctl
 gdbus call --system --dest net.hadess.PowerProfiles --object-path /net/hadess/PowerProfiles --method org.freedesktop.DBus.Properties.Set 'net.hadess.PowerProfiles' 'ActiveProfile' "<'power-saver'>"
 watch -n 1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
