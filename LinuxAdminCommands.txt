@@ -7,3 +7,18 @@ watch -n 1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sudo apt install cpufrequtils
 sudo cpufreq-set -g performance
+gpg --dump-options
+gpg --use-embedded-filename
+gpg --disable-cipher-algo
+gpg --disable-pubkey-algo
+gpg --show-session-key
+gpg -vv --show-session-key --list-packets
+find  -name '*.mp4' | xargs -I {} gpg -r robin --output {}.gpg --encrypt --sign {}
+find  -name '*.jpg' | xargs -I {} gpg -r robin --output {}.gpg --encrypt --sign {}
+find  -name '*.gpg' | xargs -I {} gpg -b robin --output {}.sig {}
+find  -name '*.gpg' | xargs -I {} gpg -b --output {}.sig {}
+find  -name '*.jpg' | xargs -I {} gpg -b --output {}.sig {}
+gpg --verify-files *
+gpg --verify-files *.sig
+gpg --verify-files *.sig &>checksum.txt
+rhash -c checksum.txt
