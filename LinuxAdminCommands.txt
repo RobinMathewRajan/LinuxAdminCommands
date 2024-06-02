@@ -22,3 +22,4 @@ gpg --verify-files *
 gpg --verify-files *.sig
 gpg --verify-files *.sig &>checksum.txt
 rhash -c checksum.txt
+rhash -arvP --speed -o checksum.txt -l checksum.log.txt --bsd *
